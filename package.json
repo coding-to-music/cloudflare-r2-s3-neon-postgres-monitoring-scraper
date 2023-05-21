@@ -1,0 +1,21 @@
+{
+  "name": "cloudflare-r2-s3-neon-postgres-monitoring-scraper",
+  "version": "1.0.0",
+  "description": "Scrape data from a website and store the data in a postgres database and images in Cloudflare R2 ",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "git add . && git commit -m Build && git push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.14.1",
+    "@vercel/postgres": "^0.3.0",
+    "dotenv": "^16.0.3",
+    "fast-csv": "^4.3.6",
+    "fs": "^0.0.1-security",
+    "pg": "^8.10.0",
+    "pnpm": "^8.5.1"
+  }
+}
