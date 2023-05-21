@@ -192,3 +192,160 @@ postgres=# SELECT COUNT(*) FROM mytable;
      0
 (1 row)
 ```
+
+## Cloudflare R2 setup
+
+```java
+npm install -g wrangler
+```
+
+## Authenticate Wrangler with your Cloudflare account
+
+To enable deployments to Cloudflare, you'll need to authenticate by logging into your Cloudflare account via Wrangler.
+
+```java
+wrangler login
+```
+
+When wrangler automatically opens your browser to display Cloudflare’s consent screen, click the Allow button. This will send an API Token to Wrangler.
+
+## ​​Using wrangler login on a remote machine
+
+### Important - open port 8976
+
+If you are using Wrangler from a remote machine, but run the login flow from your local browser, you will receive the following error message after logging in:This site can't be reached.
+
+To finish the login flow, run wrangler login and go through the login flow in the browser:
+
+```java
+wrangler login
+```
+
+Output
+
+```java
+wrangler login ⛅️ wrangler 2.1.6
+-------------------
+
+Attempting to login via OAuth...Opening a link in your default browser:
+https://dash.cloudflare.com/oauth2/auth?xyz...
+```
+
+The browser login flow will redirect you to a localhost URL on your machine.
+
+Leave the login flow active. Open a second terminal session. In that second terminal session, use curl or an equivalent request library on the remote machine to fetch this localhost URL. Copy and paste the localhost URL that was generated during the wrangler login flow and run:
+
+```java
+curl <LOCALHOST_URL>
+```
+
+## Create your first bucket
+
+Create and name your new bucket:
+
+```java
+wrangler r2 bucket create my-bucket
+```
+
+## To check that your bucket was created:
+
+```java
+wrangler r2 bucket list
+```
+
+To bind your bucket to a Worker, follow the instructions in your command-line to update your .toml file. Your R2 binding should look similar to this:
+
+```java
+compatibility_date = "2022-04-18"
+name="my-worker"
+main = "index.js"
+
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "my-bucket"
+```
+
+## Add and modify your data
+
+To manage your bucket's objects you'll need to modify your Worker:
+
+### PUT
+
+```java
+// index.js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+
+    if (request.method == 'PUT') {
+      await env.MY_BUCKET.put(key, request.body);
+      return new Response(`Put ${key} successfully!`);
+    }
+  }
+};
+```
+
+### GET
+
+```java
+// index.js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+
+    // if (request.method == 'PUT') {...}
+
+    if (request.method == 'GET') {
+      const value = await env.MY_BUCKET.get(key);
+
+      if (value === null) {
+        return new Response('Object Not Found', { status: 404 });
+      }
+
+      return new Response(value.body);
+    }
+
+  }
+};
+```
+
+### DELETE
+
+```java
+// index.js
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1);
+
+    // if (request.method == 'PUT') {...}
+    // if (request.method == 'GET') {...}
+
+    if (request.method == 'DELETE') {
+      await env.MY_BUCKET.delete(key);
+      return new Response('Deleted!', { status: 200 });
+    }
+
+  }
+};
+```
+
+## Deploy your bucket
+
+Once your bucket and Worker are ready to go live, deploy to Cloudflare's global network:
+
+```java
+wrangler publish
+```
+
+That's it! 🎉
+
+You've installed Wrangler and deployed your R2 bucket and Worker to Cloudflare. To support you along your journey developing with R2 here are some resources:
+
+Writing workers https://developers.cloudflare.com/workers/get-started/guide/#5-write-code
+
+Bucket access and privacy https://developers.cloudflare.com/r2/buckets/public-buckets/#managed-public-buckets-through-r2dev
+
+Wrangler commands https://developers.cloudflare.com/workers/wrangler/commands/
