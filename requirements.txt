@@ -1,0 +1,16 @@
+requests 
+bs4
+pandas
+datetime
+pymongo
+ipython
+psycopg2
+
+# os
+# time
+# re
+# random 
+# warnings
+# time
+# IPython.core.display
+# numpy
