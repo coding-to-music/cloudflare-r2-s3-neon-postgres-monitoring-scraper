@@ -130,6 +130,35 @@ When you deploy your program, if the deployed environment is a physical server, 
 pip install -r requirements.txt -t ./.
 ```
 
+## scraper_history table
+
+```sql
+DO $$
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM information_schema.tables
+        WHERE table_schema = 'public'
+        AND table_name = 'scraper_history'
+    ) THEN
+        DROP TABLE scraper_history;
+        RAISE NOTICE 'Table scraper_history dropped.';
+    ELSE
+        RAISE NOTICE 'Table scraper_history does not exist.';
+    END IF;
+END $$;
+
+CREATE TABLE scraper_history (
+  line_content VARCHAR(255),
+  line_type VARCHAR(255),
+  line_url VARCHAR(255),
+  site_name VARCHAR(255),
+  first_dt TIMESTAMP,
+  latest_dt TIMESTAMP,
+  PRIMARY KEY (line_content, site_name)
+);
+```
+
 ## Neon Onboarding, run this in the Neon sql-editor dashboard
 
 ```sql
