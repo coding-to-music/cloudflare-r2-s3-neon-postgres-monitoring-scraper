@@ -5,6 +5,7 @@ datetime
 pymongo
 ipython
 psycopg2
+python-dotenv
 
 # os
 # time
