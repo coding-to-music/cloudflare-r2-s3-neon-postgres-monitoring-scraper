@@ -6,6 +6,7 @@ pymongo
 ipython
 psycopg2
 python-dotenv
+boto3
 
 # os
 # time
