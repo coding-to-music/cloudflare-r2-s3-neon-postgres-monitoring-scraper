@@ -130,6 +130,82 @@ When you deploy your program, if the deployed environment is a physical server, 
 pip install -r requirements.txt -t ./.
 ```
 
+## Install Jupyter and associated packages
+
+```java
+pip install jupyter
+```
+
+```java
+jupyter --version
+```
+
+```java
+Selected Jupyter core packages...
+IPython          : 8.12.2
+ipykernel        : 6.23.2
+ipywidgets       : 8.0.6
+jupyter_client   : 8.2.0
+jupyter_core     : 5.3.0
+jupyter_server   : 2.6.0
+jupyterlab       : not installed
+nbclient         : 0.8.0
+nbconvert        : 7.5.0
+nbformat         : 5.9.0
+notebook         : 6.5.4
+qtconsole        : 5.4.3
+traitlets        : 5.9.0
+```
+
+## Test database connections to postgres
+
+`neon-connect2.py` uses .env value `POSTGRES_URL`
+
+```java
+python3 scrapers/neon-connect2.py
+```
+
+Output
+
+```java
+Connection to PostgreSQL DB successful
+Query result: (datetime.date(2023, 6, 14),)
+```
+
+`neon-connect.py` uses .env value `POSTGRES_URL`
+
+```java
+python3 scrapers/neon-connect.py
+```
+
+Output
+
+```java
+Current time: 2023-06-14 20:13:14.733108+00:00
+PostgreSQL version: PostgreSQL 15.2 on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+```
+
+## Run the Jupyter notebook `connect.ipynb` from the command line
+
+`connect.ipynb` uses .env value `FINAL_POSTGRES_URL`
+
+`FINAL_POSTGRES_URL` is `POSTGRES_URL` with `?options=endpoint%3D<endpoint-id>` appended
+
+`<endpoint-id>` is `ep-mute-recipe-123456` in the below URL example:
+
+`postgres://<user>:<password>@ep-mute-recipe-123456.us-east-2.aws.neon.tech/neondb?options=endpoint%3Dep-mute-recipe-123456`
+
+```java
+jupyter nbconvert --to markdown --execute scrapers/connect.ipynb
+```
+
+Open the markdown output file `scrapers/connect.md` and preview the markdown
+
+```
+Connection to PostgreSQL DB successful
+Query result: (datetime.date(2023, 6, 14),)
+```
+
 ## scraper_history table
 
 ```sql
