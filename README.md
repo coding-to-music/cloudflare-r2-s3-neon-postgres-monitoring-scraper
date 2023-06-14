@@ -226,13 +226,23 @@ END $$;
 
 CREATE TABLE scraper_history (
   line_content VARCHAR(255),
-  line_type VARCHAR(255),
+  line_type VARCHAR(10),
+  line_num NUMERIC,
   line_url VARCHAR(255),
-  site_name VARCHAR(255),
   first_dt TIMESTAMP,
   latest_dt TIMESTAMP,
-  PRIMARY KEY (line_content, site_name)
+  PRIMARY KEY (line_content,line_url)
 );
+```
+
+Other possible columns:
+
+foreign key to site_name table
+
+```
+  site_name VARCHAR(255),
+  PRIMARY KEY (line_content, site_name)
+
 ```
 
 ## Neon Onboarding, run this in the Neon sql-editor dashboard
