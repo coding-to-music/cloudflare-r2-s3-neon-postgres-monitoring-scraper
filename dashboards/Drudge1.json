@@ -27,6 +27,70 @@
                 "type": "postgres",
                 "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
             },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.0-cloud.2.aef9c3bd",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history LIMIT 50 ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# Streets",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
             "fieldConfig": {
                 "defaults": {
                     "color": {
