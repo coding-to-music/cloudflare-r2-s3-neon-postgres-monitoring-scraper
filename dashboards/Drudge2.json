@@ -335,7 +335,7 @@
                         "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
                     },
                     "format": "table",
-                    "rawSql": "SELECT COUNT(*) FROM scraper_history LIMIT 50 ",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history ",
                     "refId": "A"
                 }
             ],
@@ -430,76 +430,8 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where perm_link = FALSE and departed = FALSE ",
-                    "refId": "A",
-                    "sql": {
-                        "columns": [
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_num",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_content",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_url",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "first_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "latest_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_type",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            }
-                        ],
-                        "groupBy": [
-                            {
-                                "property": {
-                                    "type": "string"
-                                },
-                                "type": "groupBy"
-                            }
-                        ],
-                        "limit": 50
-                    },
-                    "table": "scraper_history"
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where perm_link = FALSE and departed = FALSE order by line_num ",
+                    "refId": "A"
                 }
             ],
             "title": "Current Links",
@@ -593,75 +525,8 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where departed = TRUE ",
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where departed = TRUE  order by line_num",
                     "refId": "A",
-                    "sql": {
-                        "columns": [
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_num",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_content",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_url",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "first_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "latest_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_type",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            }
-                        ],
-                        "groupBy": [
-                            {
-                                "property": {
-                                    "type": "string"
-                                },
-                                "type": "groupBy"
-                            }
-                        ],
-                        "limit": 50
-                    },
                     "table": "scraper_history"
                 }
             ],
@@ -756,76 +621,8 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where perm_link = TRUE ",
-                    "refId": "A",
-                    "sql": {
-                        "columns": [
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_num",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_content",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_url",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "first_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "latest_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "line_type",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            }
-                        ],
-                        "groupBy": [
-                            {
-                                "property": {
-                                    "type": "string"
-                                },
-                                "type": "groupBy"
-                            }
-                        ],
-                        "limit": 50
-                    },
-                    "table": "scraper_history"
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where perm_link = TRUE order by line_num",
+                    "refId": "A"
                 }
             ],
             "title": "Rarely Changing Links",
