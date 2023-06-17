@@ -525,7 +525,7 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where departed = TRUE  order by line_num",
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where departed = TRUE  order by latest_dt desc",
                     "refId": "A",
                     "table": "scraper_history"
                 }
