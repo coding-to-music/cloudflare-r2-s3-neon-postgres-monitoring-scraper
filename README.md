@@ -225,14 +225,19 @@ BEGIN
 END $$;
 
 CREATE TABLE scraper_history (
-  line_content VARCHAR(255),
-  line_type VARCHAR(10),
-  line_num NUMERIC,
-  line_url VARCHAR(255),
-  first_dt TIMESTAMP,
-  latest_dt TIMESTAMP,
-  PRIMARY KEY (line_content,line_url)
+  id            SERIAL PRIMARY KEY,
+  line_content  VARCHAR(255),
+  line_type     VARCHAR(10),
+  line_num      NUMERIC,
+  line_url      VARCHAR(255),
+  first_dt      TIMESTAMP,
+  latest_dt     TIMESTAMP,
+  duration_secs NUMERIC,
+  perm_link     BOOLEAN DEFAULT FALSE,
+  departed      BOOLEAN DEFAULT FALSE
 );
+
+CREATE UNIQUE INDEX idx_unique_line_content_url ON scraper_history (line_content, line_url)
 ```
 
 ### Revisions:
@@ -260,6 +265,8 @@ CREATE TABLE temp_scraper_history (
   perm_link     BOOLEAN DEFAULT FALSE,
   departed      BOOLEAN DEFAULT FALSE
 );
+
+CREATE UNIQUE INDEX idx_unique_line_content_url ON scraper_history (line_content, line_url)
 
 -- Migrate the existing data to the new table
 INSERT INTO temp_scraper_history (line_content, line_type, line_num, line_url, first_dt, latest_dt)
