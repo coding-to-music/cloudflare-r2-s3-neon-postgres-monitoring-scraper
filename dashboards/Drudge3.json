@@ -1,0 +1,744 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 68,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 3,
+                "y": 0
+            },
+            "id": 3,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history where perm_link = FALSE and departed = FALSE ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# Changable Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 6,
+                "y": 0
+            },
+            "id": 4,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history where perm_link = TRUE ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# UnChanging Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 9,
+                "y": 0
+            },
+            "id": 5,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history where departed = TRUE ",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Departed Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 12,
+                "y": 0
+            },
+            "id": 6,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history ",
+                    "refId": "A"
+                }
+            ],
+            "title": "Avg Links Per Day",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 15,
+                "y": 0
+            },
+            "id": 9,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history LIMIT 50 ",
+                    "refId": "A"
+                }
+            ],
+            "title": "Avg Link Duration",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "line_num"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 61
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "line_content"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 371
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "latest_dt"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 211
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 5
+            },
+            "id": 1,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true,
+                "sortBy": []
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "builder",
+                    "format": "table",
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where perm_link = FALSE and departed = FALSE order by line_num ",
+                    "refId": "A"
+                }
+            ],
+            "title": "Current Links",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "line_num"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 61
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "line_content"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 449
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 5
+            },
+            "id": 7,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true,
+                "sortBy": []
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "builder",
+                    "format": "table",
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where departed = TRUE  order by latest_dt desc",
+                    "refId": "A",
+                    "table": "scraper_history"
+                }
+            ],
+            "title": "Departed Links",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "line_num"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 61
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "line_content"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 449
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 13
+            },
+            "id": 8,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true,
+                "sortBy": []
+            },
+            "pluginVersion": "10.0.1-cloud.2.a7a20fbf",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "builder",
+                    "format": "table",
+                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, line_type FROM scraper_history where perm_link = TRUE order by line_num",
+                    "refId": "A"
+                }
+            ],
+            "title": "Rarely Changing Links",
+            "type": "table"
+        }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Drudge",
+    "uid": "c786db7e-35cf-4586-8c89-8b0c376d0aff",
+    "version": 11,
+    "weekStart": ""
+}
