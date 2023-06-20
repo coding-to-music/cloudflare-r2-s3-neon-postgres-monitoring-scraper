@@ -8,3 +8,5 @@ CREATE TABLE IF NOT EXISTS queries (
     );
 
 CREATE INDEX IF NOT EXISTS idx_queries_active ON queries (active);
+
+-- ALTER SEQUENCE queries_id_seq RESTART WITH 1;
