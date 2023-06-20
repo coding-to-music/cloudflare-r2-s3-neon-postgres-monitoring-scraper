@@ -3,10 +3,11 @@ import psycopg2
 from psycopg2 import OperationalError
 from dotenv import load_dotenv
 from datetime import datetime
+from queries import queries
+from query_results import query_results
 
 # Load .env file
 load_dotenv()
-
 
 def create_connection(url):
     conn = None
@@ -17,44 +18,114 @@ def create_connection(url):
         print(f"The error '{e}' occurred")
     return conn
 
+def create_queries_table(conn):
+    # Code for creating the queries table
 
-def execute_query(conn, query):
-    cursor = conn.cursor()
-    try:
-        cursor.execute(query)
-        result = cursor.fetchone()
-        print(f"Query result: {result}")
-        row_count = cursor.rowcount
-        store_query_result(conn, query, row_count, datetime.now(), None)
-    except OperationalError as e:
-        print(f"The error '{e}' occurred")
-        store_query_result(conn, query, None, datetime.now(), str(e))
+def create_query_results_table(conn):
+    # Code for creating the query_results table
 
+def execute_query(conn, query, title, query_id):
+    # Code for executing a query
 
-def store_query_result(conn, query, row_count, datetime_now, error):
-    cursor = conn.cursor()
-    insert_query = "INSERT INTO query_results (query, row_count, datetime, error) VALUES (%s, %s, %s, %s);"
-    cursor.execute(insert_query, (query, row_count, datetime_now, error))
-    conn.commit()
-    print("Query result stored successfully.")
+def store_query_result(conn, query_id, row_count, datetime_now, error):
+    # Code for storing a query result
 
+def get_active_queries(conn):
+    # Code for getting active queries
 
 if __name__ == "__main__":
     connection_url = os.getenv("POSTGRES_URL")
     connection = create_connection(connection_url)
 
     if connection:
-        queries = [
-            "SELECT current_date;",
-            "SELECT * FROM users;",
-            "INSERT INTO products (name, price) VALUES ('Phone', 999);",
-            # Add more queries here
-        ]
+        create_queries_table(connection)
+        create_query_results_table(connection)
 
-        for query in queries[:10]:
-            execute_query(connection, query)
+        # Store queries in the database
+        cursor = connection.cursor()
+        insert_query = "INSERT INTO queries (query, title, active, summary, execution_order) VALUES (%s, %s, %s, %s, %s);"
+        for query_info in queries:
+            query_values = (
+                query_info["query"],
+                query_info["title"],
+                query_info["active"],
+                query_info["summary"],
+                query_info["execution_order"]
+            )
+            cursor.execute(insert_query, query_values)
+
+        connection.commit()
+        print("Queries inserted successfully.")
+
+        active_queries = get_active_queries(connection)
+        for query_info in active_queries:
+            query = query_info[1]
+            title = query_info[2]
+            query_id = query_info[0]
+
+            print(f"\nExecuting query: {title}")
+            execute_query(connection, query, title, query_id)
 
         connection.close()
+
+
+# import os
+# import psycopg2
+# from psycopg2 import OperationalError
+# from dotenv import load_dotenv
+# from datetime import datetime
+
+# # Load .env file
+# load_dotenv()
+
+
+# def create_connection(url):
+#     conn = None
+#     try:
+#         conn = psycopg2.connect(url)
+#         print("Connection to PostgreSQL DB successful")
+#     except OperationalError as e:
+#         print(f"The error '{e}' occurred")
+#     return conn
+
+
+# def execute_query(conn, query):
+#     cursor = conn.cursor()
+#     try:
+#         cursor.execute(query)
+#         result = cursor.fetchone()
+#         print(f"Query result: {result}")
+#         row_count = cursor.rowcount
+#         store_query_result(conn, query, row_count, datetime.now(), None)
+#     except OperationalError as e:
+#         print(f"The error '{e}' occurred")
+#         store_query_result(conn, query, None, datetime.now(), str(e))
+
+
+# def store_query_result(conn, query, row_count, datetime_now, error):
+#     cursor = conn.cursor()
+#     insert_query = "INSERT INTO query_results (query, row_count, datetime, error) VALUES (%s, %s, %s, %s);"
+#     cursor.execute(insert_query, (query, row_count, datetime_now, error))
+#     conn.commit()
+#     print("Query result stored successfully.")
+
+
+# if __name__ == "__main__":
+#     connection_url = os.getenv("POSTGRES_URL")
+#     connection = create_connection(connection_url)
+
+#     if connection:
+#         queries = [
+#             "SELECT current_date;",
+#             "SELECT * FROM users;",
+#             "INSERT INTO products (name, price) VALUES ('Phone', 999);",
+#             # Add more queries here
+#         ]
+
+#         for query in queries[:10]:
+#             execute_query(connection, query)
+
+#         connection.close()
 
 
 # import os
