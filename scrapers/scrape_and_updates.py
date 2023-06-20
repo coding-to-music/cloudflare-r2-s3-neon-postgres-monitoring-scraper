@@ -1,8 +1,8 @@
 import os
-import os
 import psycopg2
 from psycopg2 import OperationalError
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load .env file
 load_dotenv()
@@ -24,8 +24,19 @@ def execute_query(conn, query):
         cursor.execute(query)
         result = cursor.fetchone()
         print(f"Query result: {result}")
+        row_count = cursor.rowcount
+        store_query_result(conn, query, row_count, datetime.now(), None)
     except OperationalError as e:
         print(f"The error '{e}' occurred")
+        store_query_result(conn, query, None, datetime.now(), str(e))
+
+
+def store_query_result(conn, query, row_count, datetime_now, error):
+    cursor = conn.cursor()
+    insert_query = "INSERT INTO query_results (query, row_count, datetime, error) VALUES (%s, %s, %s, %s);"
+    cursor.execute(insert_query, (query, row_count, datetime_now, error))
+    conn.commit()
+    print("Query result stored successfully.")
 
 
 if __name__ == "__main__":
@@ -33,11 +44,58 @@ if __name__ == "__main__":
     connection = create_connection(connection_url)
 
     if connection:
-        current_date_query = "SELECT current_date;"
-        execute_query(connection, current_date_query)
+        queries = [
+            "SELECT current_date;",
+            "SELECT * FROM users;",
+            "INSERT INTO products (name, price) VALUES ('Phone', 999);",
+            # Add more queries here
+        ]
+
+        for query in queries[:10]:
+            execute_query(connection, query)
+
         connection.close()
 
-import psycopg2
+
+# import os
+# import psycopg2
+# from psycopg2 import OperationalError
+# from dotenv import load_dotenv
+
+# # Load .env file
+# load_dotenv()
+
+
+# def create_connection(url):
+#     conn = None
+#     try:
+#         conn = psycopg2.connect(url)
+#         print("Connection to PostgreSQL DB successful")
+#     except OperationalError as e:
+#         print(f"The error '{e}' occurred")
+#     return conn
+
+
+# def execute_query(conn, query):
+#     cursor = conn.cursor()
+#     try:
+#         cursor.execute(query)
+#         result = cursor.fetchone()
+#         print(f"Query result: {result}")
+#     except OperationalError as e:
+#         print(f"The error '{e}' occurred")
+
+
+# if __name__ == "__main__":
+#     connection_url = os.getenv("POSTGRES_URL")
+#     connection = create_connection(connection_url)
+
+#     if connection:
+#         current_date_query = "SELECT current_date;"
+#         execute_query(connection, current_date_query)
+#         connection.close()
+
+# import psycopg2
 
 # # Establish the database connection
 # connection = psycopg2.connect(
