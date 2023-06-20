@@ -18,12 +18,6 @@ def create_connection(url):
         print(f"The error '{e}' occurred")
     return conn
 
-def create_queries_table(conn):
-    # Code for creating the queries table
-
-def create_query_results_table(conn):
-    # Code for creating the query_results table
-
 def execute_query(conn, query, title, query_id):
     # Code for executing a query
 
@@ -38,8 +32,6 @@ if __name__ == "__main__":
     connection = create_connection(connection_url)
 
     if connection:
-        create_queries_table(connection)
-        create_query_results_table(connection)
 
         # Store queries in the database
         cursor = connection.cursor()
