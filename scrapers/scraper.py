@@ -1,7 +1,10 @@
+import os
 import requests
+import dotenv
 from bs4 import BeautifulSoup
 import psycopg2
 from datetime import datetime
+from urllib.parse import urlparse, parse_qs, urlunparse
 
 # Load .env file
 # load_dotenv()
