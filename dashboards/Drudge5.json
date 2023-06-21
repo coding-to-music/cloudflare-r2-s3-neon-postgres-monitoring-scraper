@@ -420,42 +420,10 @@
                     "editorMode": "builder",
                     "format": "table",
                     "rawSql": "select DATE(first_dt) AS date_portion, count(*) as links_per_day from  scraper_history where perm_link = false group by DATE(first_dt) order by DATE(first_dt) ",
-                    "refId": "A",
-                    "sql": {
-                        "columns": [
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "first_dt",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            },
-                            {
-                                "parameters": [
-                                    {
-                                        "name": "duration_secs",
-                                        "type": "functionParameter"
-                                    }
-                                ],
-                                "type": "function"
-                            }
-                        ],
-                        "groupBy": [
-                            {
-                                "property": {
-                                    "type": "string"
-                                },
-                                "type": "groupBy"
-                            }
-                        ],
-                        "limit": 50
-                    },
-                    "table": "scraper_history"
+                    "refId": "A"
                 }
             ],
-            "title": "Links Per Day",
+            "title": "Links Added Daily",
             "type": "stat"
         },
         {
@@ -552,7 +520,7 @@
                     "table": "scraper_history"
                 }
             ],
-            "title": "Link Duration",
+            "title": "Link Duration Daily",
             "type": "stat"
         },
         {
