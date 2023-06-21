@@ -21,8 +21,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Python script
+      - name: Run connection test
         env:
           SCRAPE_URL: ${{ secrets.SCRAPE_URL }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: python scrapers/neon-connect2.py
+
+      - name: Run scraper
+        env:
+          SCRAPE_URL: ${{ secrets.SCRAPE_URL }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: python scrapers/neon-connect2.py
+
+      - name: Run updates of booleans and duration fields
+        env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
         run: python scrapers/neon-connect2.py
