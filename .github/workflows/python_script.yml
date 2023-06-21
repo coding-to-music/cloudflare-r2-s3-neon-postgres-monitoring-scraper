@@ -31,9 +31,9 @@ jobs:
         env:
           SCRAPE_URL: ${{ secrets.SCRAPE_URL }}
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: python scrapers/neon-connect2.py
+        run: python scrapers/scraper.py
 
       - name: Run updates of booleans and duration fields
         env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-        run: python scrapers/neon-connect2.py
+        run: python scrapers/run-updates.py
