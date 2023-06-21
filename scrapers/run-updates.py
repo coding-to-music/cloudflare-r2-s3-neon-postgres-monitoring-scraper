@@ -14,6 +14,7 @@ import psycopg2
 current_datetime = datetime.datetime.now()
 print(current_datetime)
 
+POSTGRES_URL = os.environ.get("POSTGRES_URL")
 conn = psycopg2.connect(POSTGRES_URL)
 
 cursor = conn.cursor()
