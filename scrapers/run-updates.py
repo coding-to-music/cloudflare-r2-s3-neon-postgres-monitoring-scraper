@@ -1,6 +1,6 @@
 import os
 import psycopg2
-import datetime as datetime
+import datetime
 from psycopg2 import OperationalError
 from dotenv import load_dotenv
 
