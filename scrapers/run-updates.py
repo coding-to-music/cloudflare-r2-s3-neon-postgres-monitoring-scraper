@@ -94,7 +94,7 @@ cursor = conn.cursor()
 query = """
 UPDATE scraper_history
 SET duration_secs = EXTRACT(EPOCH FROM (latest_dt - first_dt)),
-    duration_txt = TO_CHAR(latest_dt - first_dt, 'DD "day(s), " HH24:MI:SS')
+    duration_txt = TO_CHAR(latest_dt - first_dt, 'DD "day(s), " HH24:MI')
 """
 
 # UPDATE scraper_history
