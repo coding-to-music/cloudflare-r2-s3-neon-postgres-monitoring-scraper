@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 ### Update departed boolean
 import psycopg2
 
-current_datetime = datetime.now()
+current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 conn = psycopg2.connect(POSTGRES_URL)
@@ -39,13 +39,13 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.now()
+current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 ### Update perm_link boolean
 import psycopg2
 
-current_datetime = datetime.now()
+current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 conn = psycopg2.connect(POSTGRES_URL)
@@ -76,14 +76,14 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.now()
+current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 
 ### Update duration_secs
 import psycopg2
 
-current_datetime = datetime.now()
+current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 conn = psycopg2.connect(POSTGRES_URL)
@@ -107,7 +107,7 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.now()
+current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 # def create_connection(url):
