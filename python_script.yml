@@ -1,0 +1,28 @@
+name: Python Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_python_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script
+        env:
+          SCRAPE_URL: ${{ secrets.SCRAPE_URL }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: python scrapers/neon-connect2.py
