@@ -4,7 +4,7 @@ import psycopg2
 from datetime import datetime
 
 # Load .env file
-load_dotenv()
+# load_dotenv()
 
 # Make a request to the webpage
 scrape_url = os.getenv("SCRAPE_URL")

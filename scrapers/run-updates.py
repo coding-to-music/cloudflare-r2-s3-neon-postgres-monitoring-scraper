@@ -4,7 +4,7 @@ from psycopg2 import OperationalError
 from dotenv import load_dotenv
 
 # Load .env file
-load_dotenv()
+# load_dotenv()
 
 
 def create_connection(url):
