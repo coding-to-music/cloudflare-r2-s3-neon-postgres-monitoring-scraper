@@ -358,7 +358,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "Departed Links Daily",
+            "title": "Departed Links Today",
             "type": "stat"
         },
         {
@@ -423,7 +423,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "Links Added Daily",
+            "title": "Links Added Today",
             "type": "stat"
         },
         {
@@ -488,7 +488,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "Avg Link Duration Daily",
+            "title": "Avg Link Duration Today",
             "type": "stat"
         },
         {
