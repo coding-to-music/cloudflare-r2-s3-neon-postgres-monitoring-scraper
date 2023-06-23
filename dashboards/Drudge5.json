@@ -591,7 +591,7 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, duration_txt FROM scraper_history where perm_link = FALSE and departed = FALSE order by line_num ",
+                    "rawSql": "SELECT line_num, line_content, line_url, duration_txt, first_dt, latest_dt FROM scraper_history where perm_link = FALSE and departed = FALSE order by line_num ",
                     "refId": "A"
                 }
             ],
@@ -686,7 +686,7 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, duration_txt FROM scraper_history where departed = TRUE  order by latest_dt desc",
+                    "rawSql": "SELECT line_num, line_content, line_url, duration_txt, first_dt, latest_dt FROM scraper_history where departed = TRUE  order by latest_dt desc",
                     "refId": "A",
                     "table": "scraper_history"
                 }
@@ -782,7 +782,7 @@
                     },
                     "editorMode": "builder",
                     "format": "table",
-                    "rawSql": "SELECT line_num, line_content, line_url, first_dt, latest_dt, duration_txt FROM scraper_history where perm_link = TRUE order by line_num",
+                    "rawSql": "SELECT line_num, line_content, line_url, duration_txt, first_dt, latest_dt FROM scraper_history where perm_link = TRUE order by line_num",
                     "refId": "A"
                 }
             ],
