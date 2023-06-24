@@ -510,6 +510,8 @@ Dynamic Text Plugin for Grafana | Markdown, HTML and Handlebars to transform dat
 
 https://www.youtube.com/watch?v=MpNZ4Yl-p0U&ab_channel=VolkovLabs
 
+All about Markdown https://commonmark.org/help/
+
 ### Recipes
 
 https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/
@@ -569,6 +571,40 @@ To address a specific row in the returned data, select All Rows option.
 # ```
 ![{{line_content}}](https://pbs.twimg.com/media/FzVKSwOX0AEy7QL.jpg)
 ```
+### Content
+It is the code editor where you can place the parsing commands or, in other words, create a visualization template for your data. To reference the data elements in your template, use double and triple braces.
+
+To display a value from the app field.
+
+```
+{{app}}
+```
+
+Depending on the All rows/Every row toggle, the template is applied to either every row or to the entire query results.
+
+### Render HTML from data
+If you would like to render HTML returned by the data source, you need to use three-brace expressions, {{{htmlValue}}}, otherwise Handlebars escape the HTML content.
+
+```
+<ul>
+  {{{htmlValue}}}
+</ul>
+```
+
+where htmlValue is
+
+```
+<li>foo</li>
+<li>bar</li>
+```
+
+### Field name with spaces
+Field names with spaces should be displayed as 
+
+```
+{{[Field Name]}} or {{'Field Name'}}
+```
+
 
 ## Cloudflare R2 setup
 
