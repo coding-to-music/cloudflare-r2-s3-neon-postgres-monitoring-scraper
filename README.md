@@ -504,6 +504,72 @@ postgres=# SELECT COUNT(*) FROM mytable;
 (1 row)
 ```
 
+## Dynamic Text Plugin for Grafana | Markdown, HTML and Handlebars to transform data visualizations
+
+Dynamic Text Plugin for Grafana | Markdown, HTML and Handlebars to transform data visualizations
+
+https://www.youtube.com/watch?v=MpNZ4Yl-p0U&ab_channel=VolkovLabs
+
+### Recipes
+
+https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/
+
+Useful snippets that you can use in your templates.
+
+### Initial context
+Display the Initial context with which the template was executed.
+
+```json
+{{{json @root}}}
+```
+
+Take a look at the Documentation for Handlebar variables.
+
+### Iterate through all fields in each record
+
+All Rows should be selected in the Panel options.
+
+```
+{{#each data}}
+  {{#each this}} {{@key}}: {{this}} {{/each}}
+{{/each}}
+```
+
+### Conditional content
+```
+{{#if (eq app "auth")}}
+  This is the auth app.
+{{else}}
+  This is not an auth app.
+{{/if}}
+```
+
+### Specific row in the data
+To address a specific row in the returned data, select All Rows option.
+
+```
+{{data.4.title}}
+```
+
+### Handlebars variables
+
+```
+{{#each data}}
+  {{#if (eq @index 3)}}
+    {{title}}
+  {{/if}}
+{{/each}}
+```
+
+### Display an image
+
+```
+# ```json
+{{{json @root}}}
+# ```
+![{{line_content}}](https://pbs.twimg.com/media/FzVKSwOX0AEy7QL.jpg)
+```
+
 ## Cloudflare R2 setup
 
 ```java
