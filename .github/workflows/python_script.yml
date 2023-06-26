@@ -2,7 +2,7 @@ name: Python Script
 
 on:
   schedule:
-    - cron: "0,15,30,45 6-22 * * *"
+    - cron: "0,30 6-21 * * *"
     - cron: "0 * * * *"
 
 jobs:
