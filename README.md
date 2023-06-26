@@ -613,6 +613,32 @@ Field names with spaces should be displayed as
 {{[Field Name]}} or {{'Field Name'}}
 ```
 
+## JSON Root and an Image
+
+```json
+{{{json @root}}}
+```
+
+![{{line_content}}](https://pbs.twimg.com/media/FzVKSwOX0AEy7QL.jpg)
+
+## Render a Markdown table
+
+```
+| Title | Author | Year |
+| ----- | ------ | ---- |
+{{#each data}}
+| Title | Author | Year |
+{{/each}}
+```
+
+```
+| Line Content | Duration | Line Num | Site Name |Line URL |
+| ----- | ------ | ---- | ---- | ---- |
+{{#each data}}
+| {{line_content}} | {{duration_txt}} | {{line_num}} | {{site_name_txt}} | {{line_url}} |
+{{/each}}
+```
+
 ## Cloudflare R2 setup
 
 ```java
