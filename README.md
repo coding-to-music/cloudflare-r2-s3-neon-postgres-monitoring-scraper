@@ -639,6 +639,16 @@ Field names with spaces should be displayed as
 {{/each}}
 ```
 
+## Render a Markdown table for links
+
+```
+| Line | Line Content | Duration | Line Num | Site Name |Line URL |
+| ----- | ----- | ------ | ---- | ---- | ---- |
+{{#each data}}
+| {{line_num}} | {{line_content}} | {{duration_txt}} | {{line_num}} | {{site_name_txt}} | {{line_url}} |
+{{/each}}
+```
+
 ## Cloudflare R2 setup
 
 ```java
