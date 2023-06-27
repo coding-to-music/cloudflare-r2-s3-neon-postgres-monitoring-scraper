@@ -641,6 +641,55 @@ Field names with spaces should be displayed as
 
 ## Render a Markdown table for links
 
+### Data
+
+You can choose how the retrieved data is passed into the Dynamic Text Panel.
+
+- Every row means that the Content template is applied to every retrieved row.
+- All rows, the query results are passed entirely as the data field to the template.
+
+To work with the query results as a whole, you can use #each builtin helper to iterate over the records.
+
+### Every row
+
+If your data source returns the following four columns of data.
+
+```
+| app  | description                  | cluster | tier     |
+| ---- | ---------------------------- | ------- | -------- |
+| auth | Handles user authentication. | prod    | frontend |
+```
+
+### Template
+
+Display it using the following template for each row.
+
+```
+# {{app}}
+
+> {{description}}
+
+{{#if (eq tier "frontend")}}
+Link: <a href="https://{{cluster}}.example.com/{{app}}">https://{{cluster}}.example.com/{{app}}</a>
+{{/if}}
+```
+
+```
+# {{site_name_txt}}
+
+> {{line_content}}
+
+Link: <a href="{{line_content}}">{{line_url}}</a>
+```
+
+```
+| Line | Line Content | Duration | Line Num | Site Name |Line URL |
+| ----- | ----- | ------ | ---- | ---- | ---- |
+{{#each data}}
+| {{line_num}} | {{line_content}} | {{duration_txt}} | {{line_num}} | {{site_name_txt}} | {{line_url}} |
+{{/each}}
+```
+
 ```
 | Line | Line Content | Duration | Line Num | Site Name |Line URL |
 | ----- | ----- | ------ | ---- | ---- | ---- |
