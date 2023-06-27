@@ -643,6 +643,8 @@ Field names with spaces should be displayed as
 
 ### Data
 
+https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data/
+
 You can choose how the retrieved data is passed into the Dynamic Text Panel.
 
 - Every row means that the Content template is applied to every retrieved row.
@@ -677,16 +679,18 @@ Link: <a href="https://{{cluster}}.example.com/{{app}}">https://{{cluster}}.exam
 ```
 # {{site_name_txt}}
 
-> {{line_content}}
+> {{line_num}} {{line_content}} {{duration_txt}}
 
-Link: <a href="{{line_content}}">{{line_url}}</a>
+Link: <a href="{{line_url}}">{{line_content}}</a>
 ```
+
+### All Rows
 
 ```
 | Line | Line Content | Duration | Line Num | Site Name |Line URL |
 | ----- | ----- | ------ | ---- | ---- | ---- |
 {{#each data}}
-| {{line_num}} | {{line_content}} | {{duration_txt}} | {{line_num}} | {{site_name_txt}} | {{line_url}} |
+| {{line_num}} | <a href="{{line_url}}">{{line_content}}</a> | {{duration_txt}} | {{line_num}} | {{site_name_txt}} | {{line_url}} |
 {{/each}}
 ```
 
