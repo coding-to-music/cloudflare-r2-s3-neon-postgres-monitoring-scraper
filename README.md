@@ -702,6 +702,13 @@ Link: <a href="{{line_url}}">{{line_content}}</a>
 {{/each}}
 ```
 
+### Remove line breaks and non-visible whitespace with a space
+
+```
+select regexp_replace(line_content, E'\\r\\n|\\r|\\n', ' ', 'g') as line_content
+from scraper_history
+```
+
 ## Cloudflare R2 setup
 
 ```java
