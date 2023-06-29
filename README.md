@@ -826,6 +826,73 @@ return {
 };
 ```
 
+## Apache eCharts - Pie Chart - Recent Departed Links per day
+
+```sql
+select  DATE(latest_dt)::text AS departed_date,
+        count(*) as departed_num
+from  scraper_history
+where perm_link = false
+and departed = TRUE
+group by DATE(latest_dt)
+order by DATE(latest_dt)
+limit 10;
+```
+
+Function
+
+```java
+const pieData = data.series.map((s) => {
+  const modelsField = s.fields.find((f) => f.name === "departed_date");
+  const valuesField = s.fields.find((f) => f.name === "departed_num");
+
+  const models = modelsField.values.toArray();
+  const values = valuesField.values.toArray();
+
+  return values.map((d, i) => {
+    return { name: models[i].toString(), value: d };
+  });
+})[0];
+
+return {
+  tooltip: {
+    trigger: "item",
+  },
+  legend: {
+    top: "5%",
+    left: "center",
+  },
+  series: [
+    {
+      name: "Departed Links per day",
+      type: "pie",
+      radius: ["40%", "70%"],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: "#fff",
+        borderWidth: 2,
+      },
+      label: {
+        show: false,
+        position: "center",
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: "40",
+          fontWeight: "bold",
+        },
+      },
+      labelLine: {
+        show: false,
+      },
+      data: pieData,
+    },
+  ],
+};
+```
+
 ## Cloudflare R2 setup
 
 ```java
