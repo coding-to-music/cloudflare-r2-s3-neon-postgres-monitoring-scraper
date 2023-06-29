@@ -702,12 +702,45 @@ Link: <a href="{{line_url}}">{{line_content}}</a>
 {{/each}}
 ```
 
-### Remove line breaks and non-visible whitespace with a space
+### Remove line breaks and replace non-visible whitespace with a space
 
 ```
 select regexp_replace(line_content, E'\\r\\n|\\r|\\n', ' ', 'g') as line_content
 from scraper_history
 ```
+
+## Apache eCharts - map Data Sources
+
+Below is a code snippet demonstrating how you can retrieve data from your data source to use in the Apache ECharts visualization panel.
+
+```java
+data.series.map((s) => {
+  if (s.refId === "logo") {
+    images =
+      s.fields.find((f) => f.name === "body").values.buffer ||
+      s.fields.find((f) => f.name === "body").values;
+  } else if (s.refId === "connections") {
+    sources =
+      s.fields.find((f) => f.name === "source").values.buffer ||
+      s.fields.find((f) => f.name === "source").values;
+    targets =
+      s.fields.find((f) => f.name === "target").values.buffer ||
+      s.fields.find((f) => f.name === "target").values;
+  } else if (s.refId === "nodes") {
+    titles =
+      s.fields.find((f) => f.name === "title").values.buffer ||
+      s.fields.find((f) => f.name === "title").values;
+    descriptions =
+      s.fields.find((f) => f.name === "description").values.buffer ||
+      s.fields.find((f) => f.name === "description").values;
+  }
+});
+```
+
+- You can use .map() and .find() JavaScript functions,
+- refId is the name of the query retrieving data from the data source. By default, the names are A, B and so forth. The code above works with three queries the logo, connections, and nodes.
+- name is the data frame column name. The code above references the body, source, target, title, and description columns.
+- Supports Grafana 10 and older with values and values.buffer.
 
 ## Cloudflare R2 setup
 
