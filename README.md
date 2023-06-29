@@ -711,6 +711,8 @@ from scraper_history
 
 ## Apache eCharts - map Data Sources
 
+https://volkovlabs.io/plugins/volkovlabs-echarts-panel/datasources/
+
 Below is a code snippet demonstrating how you can retrieve data from your data source to use in the Apache ECharts visualization panel.
 
 ```java
@@ -741,6 +743,88 @@ data.series.map((s) => {
 - refId is the name of the query retrieving data from the data source. By default, the names are A, B and so forth. The code above works with three queries the logo, connections, and nodes.
 - name is the data frame column name. The code above references the body, source, target, title, and description columns.
 - Supports Grafana 10 and older with values and values.buffer.
+
+### Array of Arrays
+
+Convert one-dimensional arrays into many-dimensional arrays if needed.
+
+- Get values for each field.
+- Combine in an array of arrays.
+- Use as series[0] to access first query, series[1] to access second query, etc.
+- Supports Grafana 10 and older with values and values.buffer.
+
+```
+const series = data.series.map((s) => {
+  const rates =
+    s.fields.find((f) => f.name === "Rate").values.buffer ||
+    s.fields.find((f) => f.name === "Rate").values;
+  const calls =
+    s.fields.find((f) => f.name === "Calls").values.buffer ||
+    s.fields.find((f) => f.name === "Calls").values;
+  const names =
+    s.fields.find((f) => f.name === "Name").values.buffer ||
+    s.fields.find((f) => f.name === "Name").values;
+
+  return rates.map((d, i) => [d, calls[i], names[i]]);
+})[0];
+```
+
+### Pie Chart
+
+We are using the Static Data Source for this example.
+
+```java
+const pieData = data.series.map((s) => {
+  const models =
+    s.fields.find((f) => f.name === "Model").values.buffer ||
+    s.fields.find((f) => f.name === "Model").values;
+  const values =
+    s.fields.find((f) => f.name === "Value").values.buffer ||
+    s.fields.find((f) => f.name === "Value").values;
+
+  return values.map((d, i) => {
+    return { name: models[i], value: d };
+  });
+})[0];
+
+return {
+  tooltip: {
+    trigger: "item",
+  },
+  legend: {
+    top: "5%",
+    left: "center",
+  },
+  series: [
+    {
+      name: "Pie Chart",
+      type: "pie",
+      radius: ["40%", "70%"],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: "#fff",
+        borderWidth: 2,
+      },
+      label: {
+        show: false,
+        position: "center",
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: "40",
+          fontWeight: "bold",
+        },
+      },
+      labelLine: {
+        show: false,
+      },
+      data: pieData,
+    },
+  ],
+};
+```
 
 ## Cloudflare R2 setup
 
