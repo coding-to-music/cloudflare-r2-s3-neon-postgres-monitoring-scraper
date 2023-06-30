@@ -895,6 +895,10 @@ return {
 
 ## Stringlines - Custom Graphic Component - Line Chart
 
+https://echarts.volkovlabs.io/d/tg6gWiKVk/line?orgId=1&editPanel=34
+
+https://echarts.volkovlabs.io/d/tg6gWiKVk/line?orgId=1
+
 ```java
 return {
   legend: {
