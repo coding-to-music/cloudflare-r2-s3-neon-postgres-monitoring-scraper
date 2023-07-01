@@ -1016,6 +1016,75 @@ return {
 };;
 ```
 
+## The relationship between altitude (km) and air temperature (°C) - Apache eCharts
+
+```java
+return {
+  legend: {
+    data: ['Altitude (km) vs Temperature (°C)']
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: 'Temperature : <br/>{b}km : {c}°C'
+  },
+  grid: {
+    top: "4%",
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value} °C'
+    }
+  },
+  yAxis: {
+    type: 'category',
+    axisLine: { onZero: false },
+    axisLabel: {
+      formatter: '{value} km'
+    },
+    boundaryGap: true,
+    data: ['0', '10', '20', '30', '40', '50', '60', '70', '80']
+  },
+  graphic: [
+    {
+      type: 'group',
+      rotation: Math.PI / 4,
+      bounding: 'raw',
+      right: 110,
+      bottom: 110,
+      z: 100,
+      children: [
+        {
+          type: 'rect',
+          left: 'center',
+          top: 'center',
+          z: 100,
+          shape: {
+            width: 400,
+            height: 50
+          },
+          style: {
+            fill: 'rgba(0,0,0,0.0)'
+          }
+        },
+      ]
+    }
+  ],
+  series: [
+    {
+      name: 'The relationship between altitude (km) and air temperature (°C)',
+      type: 'line',
+      smooth: true,
+      data: [15, -50, -56.5, -46.5, -22.1, -2.5, -27.7, -55.7, -76.5]
+    }
+  ]
+};;
+```
+
 ## Cloudflare R2 setup
 
 ```java
