@@ -1085,6 +1085,50 @@ return {
 };;
 ```
 
+## String Lines - Apache eCharts
+
+```java
+return {
+  legend: {
+    data: ['Station (km) vs Time (H)']
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: 'Station : <br/>{b}km : {c}°C'
+  },
+  grid: {
+    top: "4%",
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value} °C'
+    }
+  },
+  yAxis: {
+    type: 'category',
+    axisLine: { onZero: false },
+    axisLabel: {
+      formatter: '{value} km'
+    },
+    boundaryGap: true,
+    data: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '70', '60', '50', '40', '30', '20', '10', '0', '10', '20', '30', '40', '50', '60', '70', '80', '70', '60', '50', '40', '30', '20', '10', '0' ]
+  },
+  series: [
+    {
+      name: 'The relationship between altitude (km) and air temperature (°C)',
+      type: 'line',
+      smooth: true,
+      data: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    }
+  ]
+};;
+```
+
 ## Cloudflare R2 setup
 
 ```java
