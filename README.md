@@ -1129,6 +1129,18 @@ return {
 };;
 ```
 
+## For date fields, use EST rather than UTC
+
+```java
+TO_CHAR(first_dt, 'YYYY-MM-DD HH24:MI') as first_dt,
+```
+
+Becomes
+
+```java
+TO_CHAR(first_dt AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI') AT TIME ZONE 'EST' as first_dt
+```
+
 ## Cloudflare R2 setup
 
 ```java
