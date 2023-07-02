@@ -2,7 +2,8 @@ name: Python Script
 
 on:
   schedule:
-    - cron: "0,30 11-2 * * *"
+    - cron: "0,30 11-23 * * *"
+    - cron: "0,30 0-2 * * *"
     - cron: "5 * * * *"
   workflow_dispatch:
 
