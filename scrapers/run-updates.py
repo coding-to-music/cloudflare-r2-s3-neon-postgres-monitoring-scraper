@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # Load .env file
 # load_dotenv()
 
-est_tz = pytz.timezone("US/Eastern")
+est_tz = pytz.timezone("America/New_York")
 
 ### Update departed boolean
 import psycopg2

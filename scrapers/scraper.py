@@ -30,7 +30,7 @@ cursor = conn.cursor()
 # Initialize line_num as an integer
 line_num = 0
 
-est_tz = pytz.timezone("US/Eastern")
+est_tz = pytz.timezone("America/New_York")
 current_datetime = datetime.now(est_tz)
 # current_datetime = datetime.now()
 print(current_datetime)
