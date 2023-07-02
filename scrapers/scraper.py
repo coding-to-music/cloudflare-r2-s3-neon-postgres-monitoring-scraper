@@ -32,7 +32,7 @@ line_num = 0
 
 est_tz = pytz.timezone("America/New_York")
 current_datetime = datetime.now(est_tz)
-# current_datetime = datetime.now()
+# current_datetime = datetime.datetime.now()
 print(current_datetime)
 
 # Iterate over the lines and insert/update each line into the database
@@ -79,7 +79,7 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.now()
+current_datetime = datetime.now(est_tz)
 print(current_datetime)
 
 
