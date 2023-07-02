@@ -31,7 +31,7 @@ cursor = conn.cursor()
 line_num = 0
 
 est_tz = pytz.timezone("US/Eastern")
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.now(est_tz)
 # current_datetime = datetime.now()
 print(current_datetime)
 
