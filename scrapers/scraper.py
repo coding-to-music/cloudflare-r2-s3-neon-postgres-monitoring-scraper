@@ -3,6 +3,7 @@ import requests
 import dotenv
 from bs4 import BeautifulSoup
 import psycopg2
+import pytz
 from datetime import datetime
 from urllib.parse import urlparse, parse_qs, urlunparse
 
@@ -29,7 +30,9 @@ cursor = conn.cursor()
 # Initialize line_num as an integer
 line_num = 0
 
-current_datetime = datetime.now()
+est_tz = pytz.timezone("US/Eastern")
+current_datetime = datetime.datetime.now(est_tz)
+# current_datetime = datetime.now()
 print(current_datetime)
 
 # Iterate over the lines and insert/update each line into the database
