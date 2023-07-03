@@ -1,8 +1,29 @@
 name: Python Script
 
+# Since cron uses UTC, we need to convert the desired local time (6:30 AM EST to 9:30 PM EST) into UTC.
+# Here's a series of crontab statements that will run once at the 30 minutes past each hour within the specified time range:
+# 30 11 * * * your_command1    # 6:30 AM EST
+# 30 12 * * * your_command2    # 7:30 AM EST
+# 30 13 * * * your_command3    # 8:30 AM EST
+# 30 14 * * * your_command4    # 9:30 AM EST
+# 30 15 * * * your_command5    # 10:30 AM EST
+# 30 16 * * * your_command6    # 11:30 AM EST
+# 30 17 * * * your_command7    # 12:30 PM EST
+# 30 18 * * * your_command8    # 1:30 PM EST
+# 30 19 * * * your_command9    # 2:30 PM EST
+# 30 20 * * * your_command10   # 3:30 PM EST
+# 30 21 * * * your_command11   # 4:30 PM EST
+# 30 22 * * * your_command12   # 5:30 PM EST
+# 30 23 * * * your_command13   # 6:30 PM EST
+# 30 0 * * * your_command14    # 7:30 PM EST
+# 30 1 * * * your_command15    # 8:30 PM EST
+# 30 2 * * * your_command15    # 9:30 PM EST
+
 on:
   schedule:
     - cron: "0 * * * *"
+    - cron: "30 11-23 * * *"
+    - cron: "30 0-2 * * *"
   workflow_dispatch:
 
 jobs:
