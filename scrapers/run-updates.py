@@ -8,12 +8,13 @@ from dotenv import load_dotenv
 # Load .env file
 # load_dotenv()
 
-est_tz = pytz.timezone("America/New_York")
+# est_tz = pytz.timezone("America/New_York")
+utc_tz = pytz.timezone("UTC")
 
 ### Update departed boolean
 import psycopg2
 
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
 POSTGRES_URL = os.environ.get("POSTGRES_URL")
@@ -42,13 +43,13 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
 ### Update perm_link boolean
 import psycopg2
 
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
 conn = psycopg2.connect(POSTGRES_URL)
@@ -79,14 +80,14 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
 
 ### Update duration_secs
 import psycopg2
 
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
 conn = psycopg2.connect(POSTGRES_URL)
@@ -110,7 +111,7 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.datetime.now(est_tz)
+current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
 # def create_connection(url):

@@ -30,8 +30,10 @@ cursor = conn.cursor()
 # Initialize line_num as an integer
 line_num = 0
 
-est_tz = pytz.timezone("America/New_York")
-current_datetime = datetime.now(est_tz)
+# est_tz = pytz.timezone("America/New_York")
+utc_tz = pytz.timezone("UTC")
+
+current_datetime = datetime.now(utc_tz)
 # current_datetime = datetime.datetime.now()
 print(current_datetime)
 
@@ -79,7 +81,7 @@ conn.commit()
 cursor.close()
 conn.close()
 
-current_datetime = datetime.now(est_tz)
+current_datetime = datetime.now(utc_tz)
 print(current_datetime)
 
 
