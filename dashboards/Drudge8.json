@@ -1,0 +1,841 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 68,
+    "links": [],
+    "liveNow": true,
+    "panels": [
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# Links Processed ",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 3,
+                "y": 0
+            },
+            "id": 4,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history where perm_link = TRUE ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# UnChanging Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 6,
+                "y": 0
+            },
+            "id": 5,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history where departed = TRUE ",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Departed Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 9,
+                "y": 0
+            },
+            "id": 3,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "SELECT COUNT(*) FROM scraper_history where perm_link = FALSE and departed = FALSE ",
+                    "refId": "A"
+                }
+            ],
+            "title": "# Changable Links",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 12,
+                "y": 0
+            },
+            "id": 12,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "eed248a7-99cc-45dd-bf90-f3120ccdae02"
+                    },
+                    "format": "table",
+                    "rawSql": "select DATE(latest_dt) AS date_portion, count(*) as departed_links_per_day from  scraper_history where perm_link = false and departed = TRUE group by DATE(latest_dt) order by DATE(latest_dt) ",
+                    "refId": "A"
+                }
+            ],
+            "title": "Departed Links Today",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 15,
+                "y": 0
+            },
+            "id": 10,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "/^links_per_day$/",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "builder",
+                    "format": "table",
+                    "rawSql": "select DATE(first_dt) AS date_portion, count(*) as links_per_day from  scraper_history where perm_link = false group by DATE(first_dt) order by DATE(first_dt) ",
+                    "refId": "A"
+                }
+            ],
+            "title": "Links Added Today",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "h"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 18,
+                "y": 0
+            },
+            "id": 11,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "/^avg_duration_hours$/",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.0.2-cloud.1.94a6f396",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "builder",
+                    "format": "table",
+                    "rawSql": "select DATE(first_dt) AS date_portion, count(*) as links_per_day, round((avg(duration_secs) / 3600),1) as avg_duration_hours from  scraper_history where perm_link = false group by DATE(first_dt) order by DATE(first_dt) ",
+                    "refId": "A"
+                }
+            ],
+            "title": "Avg Link Duration Today",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 21,
+                "y": 0
+            },
+            "id": 15,
+            "options": {
+                "baidu": {
+                    "callback": "bmapReady",
+                    "key": ""
+                },
+                "editor": {
+                    "format": "auto",
+                    "height": 600
+                },
+                "gaode": {
+                    "key": "",
+                    "plugin": "AMap.Scale,AMap.ToolBar"
+                },
+                "getOption": "const pieData = data.series.map((s) => {\n  const modelsField = s.fields.find((f) => f.name === \"departed_date\");\n  const valuesField = s.fields.find((f) => f.name === \"departed_num\");\n\n  const models = modelsField.values.toArray();\n  const values = valuesField.values.toArray();\n\n  return values.map((d, i) => {\n    return { name: models[i].toString(), value: d };\n  });\n})[0];\n\nreturn {\n  tooltip: {\n    trigger: \"item\",\n  },\n  legend: {\n    show: false,\n    top: \"5%\",\n    left: \"5%\", // Position the legend on the left side\n  },\n  series: [\n    {\n      name: \"Departed Links per day\",\n      type: \"pie\",\n      radius: [\"40%\", \"70%\"],\n      avoidLabelOverlap: false,\n      itemStyle: {\n        borderRadius: 10,\n        borderColor: \"#fff\",\n        borderWidth: 2,\n      },\n      label: {\n        show: true, // Show the labels\n        position: \"outside\", // Position the labels outside the slices\n        formatter: \"{b}: {c}\", // Customize the label format as needed\n      },\n      emphasis: {\n        label: {\n          show: true,\n          fontSize: \"40\",\n          fontWeight: \"bold\",\n        },\n      },\n      labelLine: {\n        show: false,\n      },\n      data: pieData,\n    },\n  ],\n};\n",
+                "google": {
+                    "callback": "gmapReady",
+                    "key": ""
+                },
+                "map": "none",
+                "renderer": "canvas",
+                "themeEditor": {
+                    "config": "{}",
+                    "height": 400,
+                    "name": "default"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select DATE(latest_dt)::text AS departed_date, count(*) as departed_num from  scraper_history where perm_link = false and departed = TRUE group by DATE(latest_dt) order by DATE(latest_dt) limit 8;\n",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [
+                                    {
+                                        "name": "id",
+                                        "type": "functionParameter"
+                                    }
+                                ],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "scraper_history"
+                }
+            ],
+            "title": "Recent Departed Links per day",
+            "type": "volkovlabs-echarts-panel"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "gridPos": {
+                "h": 28,
+                "w": 12,
+                "x": 0,
+                "y": 5
+            },
+            "id": 13,
+            "options": {
+                "content": "| Line | Line Content | Duration | Site Name | First Date | Latest Date | id |\n| ----- | ----- | ------ | ---- | ---- | ---- | ---- |\n{{#each data}}\n| {{line_num}} | <a href=\"{{line_url}}\">{{line_content}}</a> | {{duration_txt}} | {{site_name_txt}} | {{first_dt}} | {{latest_dt}} | {{id}} |\n{{/each}}\n",
+                "defaultContent": "The query didn't return any results.",
+                "editor": {
+                    "format": "auto",
+                    "height": 200,
+                    "language": "markdown"
+                },
+                "editors": [],
+                "everyRow": false,
+                "helpers": "",
+                "styles": ""
+            },
+            "pluginVersion": "10.0.1-cloud.3.f250259e",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "WITH time_zone_info AS (\n  SELECT \n    CASE\n      WHEN (SELECT current_setting('TIMEZONE') = 'America/New York') \n           AND (SELECT abbrev FROM pg_timezone_names WHERE name = 'America/New York' LIMIT 1) = 'EST'\n      THEN 'EST'\n      ELSE 'EDT'\n    END AS timezone_status\n)\nSELECT timezone_status,\n--      TO_CHAR(timezone('EST', first_dt), 'YYYY-MM-DD HH24:MI') as old_first_dt,\n--      TO_CHAR(timezone('EST', latest_dt), 'YYYY-MM-DD HH24:MI') as old_latest_dt,\n      TO_CHAR(latest_dt AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI') as utc_latest_dt,\n      TO_CHAR(first_dt AT TIME ZONE 'UTC' AT TIME ZONE time_zone_info.timezone_status, 'YYYY-MM-DD HH24:MI') as first_dt,\n      TO_CHAR(latest_dt AT TIME ZONE 'UTC' AT TIME ZONE time_zone_info.timezone_status, 'YYYY-MM-DD HH24:MI') as latest_dt,\n      id, \n      line_num, \n      regexp_replace(line_content, E'\\\\r\\\\n|\\\\r|\\\\n', ' ', 'g') as line_content, \n      line_url, duration_txt, site_name_txt \nFROM scraper_history, time_zone_info\nwhere perm_link = FALSE \nand departed = FALSE \n--and id in (select max(id) from scraper_history)\norder by duration_txt, line_num \n",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Current Links (DM)",
+            "type": "marcusolsson-dynamictext-panel"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 5
+            },
+            "id": 16,
+            "options": {
+                "baidu": {
+                    "callback": "bmapReady",
+                    "key": ""
+                },
+                "editor": {
+                    "format": "auto",
+                    "height": 600
+                },
+                "gaode": {
+                    "key": "",
+                    "plugin": "AMap.Scale,AMap.ToolBar"
+                },
+                "getOption": "const lineData = data.series.map((s) => {\n  const dateField = s.fields.find((f) => f.name === \"date_portion\");\n  const linksField = s.fields.find((f) => f.name === \"links_per_day\");\n  const departedField = s.fields.find((f) => f.name === \"departed_num\");\n\n  const dates = dateField.values.toArray();\n  const links = linksField.values.toArray();\n  const departed = departedField.values.toArray();\n\n  return dates.map((d, i) => {\n    const date = new Date(d);\n    const dayOfWeek = date.toLocaleString(\"en-US\", { weekday: \"short\" });\n    const formattedDate = `${dayOfWeek} ${d}`;\n    return [formattedDate, links[i], departed[i]];\n  });\n})[0];\n\nreturn {\n  tooltip: {\n    trigger: \"axis\",\n  },\n  legend: {\n    show: false,\n    top: \"5%\",\n    left: \"5%\", // Position the legend on the left side\n  },\n  grid: {\n    top: \"10%\", // Adjust the top margin\n    left: \"2%\", // Adjust the left margin\n    right: \"2%\", // Adjust the right margin\n    bottom: \"5%\", // Adjust the bottom margin\n    containLabel: true, // Make sure the labels are contained within the grid\n  },\n  series: [\n    {\n      name: \"Links per Day\",\n      type: \"line\",\n      smooth: true, // Enable smooth curve\n      data: lineData.map((d) => [d[0], d[1]]), // Use formatted dates and links as data\n    },\n    {\n      name: \"Departed Links\",\n      type: \"line\",\n      smooth: true, // Enable smooth curve\n      data: lineData.map((d) => [d[0], d[2]]), // Use formatted dates and departed links as data\n    },\n  ],\n  xAxis: {\n    type: \"category\",\n    data: lineData.map((d) => d[0]), // Use formatted dates as xAxis data\n  },\n  yAxis: {\n    type: \"value\",\n  },\n};\n",
+                "google": {
+                    "callback": "gmapReady",
+                    "key": ""
+                },
+                "map": "none",
+                "renderer": "canvas",
+                "themeEditor": {
+                    "config": "{}",
+                    "height": 400,
+                    "name": "default"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  date_portion::text as date_portion,\n  links_per_day,\n  departed_num\nFROM (\n  SELECT\n    DATE(first_dt) AS date_portion,\n    COUNT(*) AS links_per_day\n  FROM scraper_history\n  WHERE perm_link = false\n  GROUP BY DATE(first_dt)\n) AS links\nJOIN (\n  SELECT\n    DATE(latest_dt) AS departed_date,\n    COUNT(*) AS departed_num\n  FROM scraper_history\n  WHERE perm_link = false AND departed = TRUE\n  GROUP BY DATE(latest_dt)\n) AS departures ON links.date_portion = departures.departed_date\nORDER BY links.date_portion\n",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "scraper_history"
+                }
+            ],
+            "title": "Added and Departed Links per day",
+            "type": "volkovlabs-echarts-panel"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "gridPos": {
+                "h": 17,
+                "w": 12,
+                "x": 12,
+                "y": 13
+            },
+            "id": 14,
+            "options": {
+                "content": "| Line | Line Content | Duration | Site Name | First Date | Latest Date | id |\n| ----- | ----- | ------ | ---- | ---- | ---- | ---- |\n{{#each data}}\n| {{line_num}} | <a href=\"{{line_url}}\">{{line_content}}</a> | {{duration_txt}} | {{site_name_txt}} | {{first_dt}} | {{latest_dt}} | {{id}} |\n{{/each}}\n",
+                "defaultContent": "The query didn't return any results.",
+                "editor": {
+                    "format": "auto",
+                    "height": 200,
+                    "language": "markdown"
+                },
+                "editors": [],
+                "everyRow": false,
+                "helpers": "",
+                "styles": ""
+            },
+            "pluginVersion": "10.0.1-cloud.3.f250259e",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "WITH time_zone_info AS (\n  SELECT \n    CASE\n      WHEN (SELECT current_setting('TIMEZONE') = 'America/New York') \n           AND (SELECT abbrev FROM pg_timezone_names WHERE name = 'America/New York' LIMIT 1) = 'EST'\n      THEN 'EST'\n      ELSE 'EDT'\n    END AS timezone_status\n)\nSELECT timezone_status,\n      TO_CHAR(latest_dt AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI') as utc_latest_dt,\n      TO_CHAR(first_dt AT TIME ZONE 'UTC' AT TIME ZONE time_zone_info.timezone_status, 'YYYY-MM-DD HH24:MI') as first_dt,\n      TO_CHAR(latest_dt AT TIME ZONE 'UTC' AT TIME ZONE time_zone_info.timezone_status, 'YYYY-MM-DD HH24:MI') as latest_dt,\n      id, \n      line_num, \n      regexp_replace(line_content, E'\\\\r\\\\n|\\\\r|\\\\n', ' ', 'g') as line_content, \n      line_url, duration_txt, site_name_txt \nFROM scraper_history, time_zone_info\nwhere departed = TRUE and id not in (109859) order by latest_dt desc, line_num asc\n",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "scraper_history"
+                }
+            ],
+            "title": "Departed Links",
+            "type": "marcusolsson-dynamictext-panel"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+            },
+            "gridPos": {
+                "h": 10,
+                "w": 12,
+                "x": 12,
+                "y": 30
+            },
+            "id": 8,
+            "options": {
+                "content": "| Line | Line Content | Duration | Site Name | First Date | Latest Date | id |\n| ----- | ----- | ------ | ---- | ---- | ---- | ---- |\n{{#each data}}\n| {{line_num}} | <a href=\"{{line_url}}\">{{line_content}}</a> | {{duration_txt}} | {{site_name_txt}} | {{first_dt}} | {{latest_dt}} | {{id}} |\n{{/each}}\n",
+                "defaultContent": "The query didn't return any results.",
+                "editor": {
+                    "format": "auto",
+                    "height": 200,
+                    "language": "markdown"
+                },
+                "editors": [],
+                "everyRow": false,
+                "helpers": "",
+                "styles": ""
+            },
+            "pluginVersion": "10.0.1-cloud.3.f250259e",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "e169eeba-c74b-4499-949f-c5a3226e86ab"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT line_num, line_content, line_url, duration_txt, id, site_name_txt, TO_CHAR(first_dt, 'YYYY-MM-DD HH24:MI') as first_dt, TO_CHAR(latest_dt, 'YYYY-MM-DD HH24:MI') as latest_dt FROM scraper_history where perm_link = TRUE order by line_num\n",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Rarely Changing Links",
+            "type": "marcusolsson-dynamictext-panel"
+        }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-7d",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Drudge",
+    "uid": "c786db7e-35cf-4586-8c89-8b0c376d0aff",
+    "version": 70,
+    "weekStart": ""
+}
