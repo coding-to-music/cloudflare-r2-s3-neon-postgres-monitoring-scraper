@@ -11,7 +11,9 @@ from dotenv import load_dotenv
 # est_tz = pytz.timezone("America/New_York")
 utc_tz = pytz.timezone("UTC")
 
+####################################
 ### Update departed boolean
+####################################
 import psycopg2
 
 current_datetime = datetime.datetime.now(utc_tz)
@@ -46,7 +48,9 @@ conn.close()
 current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
+####################################
 ### Update perm_link boolean
+####################################
 import psycopg2
 
 current_datetime = datetime.datetime.now(utc_tz)
@@ -83,8 +87,9 @@ conn.close()
 current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
-
+####################################
 ### Update duration_secs
+####################################
 import psycopg2
 
 current_datetime = datetime.datetime.now(utc_tz)
@@ -103,6 +108,35 @@ SET duration_secs = EXTRACT(EPOCH FROM (latest_dt - first_dt)),
 # UPDATE scraper_history
 # SET duration_secs = EXTRACT(EPOCH FROM (latest_dt - first_dt))
 
+
+cursor.execute(query)
+
+# Commit the changes and close the database connection
+conn.commit()
+cursor.close()
+conn.close()
+
+current_datetime = datetime.datetime.now(utc_tz)
+print(current_datetime)
+
+####################################
+### Update site_name_txt
+####################################
+import psycopg2
+
+current_datetime = datetime.datetime.now(utc_tz)
+print(current_datetime)
+
+conn = psycopg2.connect(POSTGRES_URL)
+
+cursor = conn.cursor()
+
+query = """
+update scraper_history
+set    site_name_txt = REPLACE(site_name_txt, 'www.', '')  
+where length(site_name_txt) > 0
+  AND site_name_txt LIKE '%www.%'
+"""
 
 cursor.execute(query)
 
