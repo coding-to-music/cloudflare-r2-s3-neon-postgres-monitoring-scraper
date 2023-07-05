@@ -1,3 +1,10 @@
+//select DATE(latest_dt)::text AS departed_date, count(*) as departed_num
+//from  scraper_history
+//where perm_link = false and departed = TRUE
+//group by DATE(latest_dt)
+//order by DATE(latest_dt)
+//desc limit 8;
+
 const pieData = data.series.map((s) => {
   const modelsField = s.fields.find((f) => f.name === "departed_date");
   const valuesField = s.fields.find((f) => f.name === "departed_num");
