@@ -63,6 +63,7 @@ for line in lines:
     if bool(line_content):
         # domain name not available for images
         site_name_txt = urlparse(line_url).netloc
+        # remove the www.
         if site_name_txt.startswith("www."):
             site_name_txt = site_name_txt[4:]
 
