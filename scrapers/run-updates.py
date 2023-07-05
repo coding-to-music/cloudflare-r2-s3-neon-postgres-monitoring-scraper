@@ -148,6 +148,8 @@ conn.close()
 current_datetime = datetime.datetime.now(utc_tz)
 print(current_datetime)
 
+####################################
+####################################
 # def create_connection(url):
 #     conn = None
 #     try:

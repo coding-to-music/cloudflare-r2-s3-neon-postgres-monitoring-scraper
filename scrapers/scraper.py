@@ -39,10 +39,18 @@ print(current_datetime)
 
 # Iterate over the lines and insert/update each line into the database
 for line in lines:
-    line_content = line.get_text()
-    line_type = "Link"
-    line_url = line.get("href")
     site_name_txt = ""
+    line_type = "Link"
+
+    line_content = line.get_text()
+    # remove leading or trailing spaces
+    if line_content is not None:
+        line_content = line_content.strip()
+
+    line_url = line.get("href")
+    # remove leading or trailing spaces
+    if line_url is not None:
+        line_url = line_url.strip()
 
     # Increment line_num for each line
     line_num += 1
@@ -55,6 +63,8 @@ for line in lines:
     if bool(line_content):
         # domain name not available for images
         site_name_txt = urlparse(line_url).netloc
+        if site_name_txt.startswith("www."):
+            site_name_txt = site_name_txt[4:]
 
         # Upsert the line into the database
         query = """
