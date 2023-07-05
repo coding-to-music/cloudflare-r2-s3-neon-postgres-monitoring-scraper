@@ -1,3 +1,25 @@
+// SELECT
+//   date_portion::text as date_portion,
+//   links_per_day,
+//   departed_num
+// FROM (
+//   SELECT
+//     DATE(first_dt) AS date_portion,
+//     COUNT(*) AS links_per_day
+//   FROM scraper_history
+//   WHERE perm_link = false
+//   GROUP BY DATE(first_dt)
+// ) AS links
+// JOIN (
+//   SELECT
+//     DATE(latest_dt) AS departed_date,
+//     COUNT(*) AS departed_num
+//   FROM scraper_history
+//   WHERE perm_link = false AND departed = TRUE
+//   GROUP BY DATE(latest_dt)
+// ) AS departures ON links.date_portion = departures.departed_date
+// ORDER BY links.date_portion
+
 const lineData = data.series.map((s) => {
   const dateField = s.fields.find((f) => f.name === "date_portion");
   const linksField = s.fields.find((f) => f.name === "links_per_day");
