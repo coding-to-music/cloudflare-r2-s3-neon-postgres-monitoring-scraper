@@ -83,24 +83,21 @@ const labelOption = {
 };
 
 // Generate x-axis data dynamically
-const xAxisData = [...new Set(queryData.map((data) => data.site_name_txt))];
+const xAxisData = [...new Set(queryData.map((data) => data.first_dt))];
 
 // Generate series data dynamically
-const seriesData = xAxisData.map((site) => {
-  const dataForSite = queryData.filter((data) => data.site_name_txt === site);
+const seriesData = xAxisData.map((date) => {
+  const dataForDate = queryData.filter((data) => data.first_dt === date);
   return {
-    name: site,
+    name: date,
     type: "bar",
     label: labelOption,
     emphasis: {
       focus: "series",
     },
-    data: dataForSite.map((data) => data.num_count),
+    data: dataForDate.map((data) => data.num_count),
   };
 });
-
-// Generate legend data dynamically
-const legendData = [...new Set(queryData.map((data) => data.first_dt))];
 
 // Assign series data to the chart
 return {
@@ -112,7 +109,7 @@ return {
   },
   legend: {
     show: true, // Add show: true to display the legend
-    data: legendData, // Use dynamically generated legend data
+    data: xAxisData, // Use dynamically generated x-axis data
   },
   toolbox: {
     show: true,
