@@ -91,15 +91,18 @@ labelOption.formatter = function (params) {
 };
 
 // Generate series data dynamically
-const seriesData = queryData.map((data) => ({
-  name: data.site_name_txt,
-  type: "bar",
-  label: labelOption,
-  emphasis: {
-    focus: "series",
-  },
-  data: [data.num_count],
-}));
+const seriesData = xAxisData.map((date) => {
+  const dataForDate = queryData.filter((data) => data.first_dt === date);
+  return {
+    name: date,
+    type: "bar",
+    label: labelOption,
+    emphasis: {
+      focus: "series",
+    },
+    data: dataForDate.map((data) => data.num_count),
+  };
+});
 
 // Assign series data to the chart
 return {
