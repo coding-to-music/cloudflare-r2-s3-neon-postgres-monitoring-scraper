@@ -23,29 +23,36 @@ const queryData = [
   { first_dt: "2023-07-05", site_name_txt: "wsj.com", num_count: 9 },
 ];
 
+// console.log("Hello, world!");
+
 // Generate x-axis data dynamically
 const xAxisData = [...new Set(queryData.map((data) => data.first_dt))];
-
-console.log("Hello, world!");
-
-// Generate series data dynamically
-// const seriesData = xAxisData.map((date) => {
-//   const dataForDate = queryData.filter((data) => data.first_dt === date);
-// const seriesData = xAxisData.map((site) => {
-//   const dataForSite = queryData.filter((data) => data.site_name_txt === site);
-// const seriesData = xAxisData.map((date) => {
-//   const dataForDate = queryData.filter((data) => data.first_dt === date);
-//   return {
-//     name: date,
-//     type: "bar",
-//     label: labelOption,
-//     emphasis: {
-//       focus: "series",
-//     },
-//     data: dataForDate.map((data) => data.num_count),
-//   };
-// });
+console.log("xAxisData:", xAxisData);
 
 // Generate legend data dynamically
-//const legendData = [...new Set(queryData.map((data) => data.site_name_txt))]; // get no legend
-// const legendData = [...new Set(queryData.map((data) => data.first_dt))];
+const legendData = [...new Set(queryData.map((data) => data.site_name_txt))]; // get no legend
+console.log("legendData:", legendData);
+
+// const site_name = [...new Set(queryData.map((data) => data.site_name_txt))]; // get no legend
+// console.log("site_name:", site_name);
+
+// const first_date = [...new Set(queryData.map((data) => data.first_dt))];
+// console.log("first_date:", first_date);
+
+// const valuesData = [...new Set(queryData.map((data) => data.num_count))];
+// console.log("valuesData:", valuesData);
+
+const seriesData = xAxisData.map((date) => {
+  const dataForDate = queryData.filter((data) => data.first_dt === date);
+  return {
+    name: date,
+    type: "bar",
+    //   label: labelOption,
+    emphasis: {
+      focus: "series",
+    },
+    data: dataForDate.map((data) => data.num_count),
+  };
+});
+
+console.log("seriesData:", seriesData);
