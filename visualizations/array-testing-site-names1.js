@@ -42,20 +42,23 @@ console.log("legendData:", legendData);
 // const valuesData = [...new Set(queryData.map((data) => data.num_count))];
 // console.log("valuesData:", valuesData);
 
+// const dataForDate = queryData.filter((data) => data.first_dt === date);
+// const seriesData = xAxisData.map((site) => {
 // const seriesData = xAxisData.map((date) => {
-//   const dataForDate = queryData.filter((data) => data.first_dt === date);
+
+//   //   const dataForDate = queryData.filter((data) => data.first_dt === date);
+//   const dataForSite = queryData.filter((data) => data.site_name_txt === site);
+// const seriesData = xAxisData.map((date) => {
 const seriesData = xAxisData.map((site) => {
   const dataForSite = queryData.filter((data) => data.site_name_txt === site);
-  // const seriesData = xAxisData.map((date) => {
-  //   const dataForDate = queryData.filter((data) => data.first_dt === date);
   return {
-    name: date,
+    name: site,
     type: "bar",
     //   label: labelOption,
     emphasis: {
       focus: "series",
     },
-    data: dataForDate.map((data) => data.num_count),
+    data: dataForSite.map((data) => data.num_count),
   };
 });
 
