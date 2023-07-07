@@ -86,6 +86,10 @@ const labelOption = {
 const xAxisData = [...new Set(queryData.map((data) => data.first_dt))];
 
 // Generate series data dynamically
+// const seriesData = xAxisData.map((date) => {
+//   const dataForDate = queryData.filter((data) => data.first_dt === date);
+// const seriesData = xAxisData.map((site) => {
+//   const dataForSite = queryData.filter((data) => data.site_name_txt === site);
 const seriesData = xAxisData.map((date) => {
   const dataForDate = queryData.filter((data) => data.first_dt === date);
   return {
@@ -100,6 +104,7 @@ const seriesData = xAxisData.map((date) => {
 });
 
 // Generate legend data dynamically
+//const legendData = [...new Set(queryData.map((data) => data.site_name_txt))]; // get no legend
 const legendData = [...new Set(queryData.map((data) => data.first_dt))];
 
 // Assign series data to the chart
