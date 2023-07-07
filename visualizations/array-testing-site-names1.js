@@ -42,8 +42,12 @@ console.log("legendData:", legendData);
 // const valuesData = [...new Set(queryData.map((data) => data.num_count))];
 // console.log("valuesData:", valuesData);
 
-const seriesData = xAxisData.map((date) => {
-  const dataForDate = queryData.filter((data) => data.first_dt === date);
+// const seriesData = xAxisData.map((date) => {
+//   const dataForDate = queryData.filter((data) => data.first_dt === date);
+const seriesData = xAxisData.map((site) => {
+  const dataForSite = queryData.filter((data) => data.site_name_txt === site);
+  // const seriesData = xAxisData.map((date) => {
+  //   const dataForDate = queryData.filter((data) => data.first_dt === date);
   return {
     name: date,
     type: "bar",
