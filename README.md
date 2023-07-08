@@ -36,6 +36,44 @@ https://github.com/angelicadietzel/scraping-craigslist-housing
 
 https://betterprogramming.pub/the-only-step-by-step-guide-youll-need-to-build-a-web-scraper-with-python-e79066bd895a
 
+#### Tasks
+
+#### Changes to Charts
+
+- Do - Display images inline with associated link
+- Do - have color of text where is in the original
+- Do - Group related links perhaps order by id?
+- Do - Histogram of Link Duration
+- Do - Each table (Current, Departed, UnChanging) should have a rowcount
+- Done - The time off by 5 hours, use local time
+- Done - Remove links and instead have clickable links
+- Done - More human-readable dates
+- Done - Graph of links per day
+- Done - Display duration
+- Done - Each number stat should have a background graph
+
+#### New Columns
+
+- Do - Updated_dt
+- Done - Site Name
+- Done - Store human readable duration
+
+#### New Charts
+
+- Do - Histogram of SiteNames - but show it changing over time
+- Do - Last Scrape Time
+- Do - Table of booleans and counts
+- Done - Word Cloud of line_content
+- Done - Treemap of site_name_txt
+
+#### New Jobs
+
+- Do - Images
+- Do - updated_dt via a trigger
+- Done - remove www. from site_name
+- Done - site_name_txt is only populated for rows where id > 340
+- Done - Run python script as GitHub action
+
 ## Table of Contents
 
 - [Objective](#objective)
