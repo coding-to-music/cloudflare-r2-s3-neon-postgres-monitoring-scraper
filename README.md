@@ -61,8 +61,8 @@ https://betterprogramming.pub/the-only-step-by-step-guide-youll-need-to-build-a-
 #### New Charts
 
 - Do - Histogram of SiteNames - but show it changing over time
-- Do - Last Scrape Time
 - Do - Table of booleans and counts
+- Done - Last Scrape Time
 - Done - Word Cloud of line_content
 - Done - Treemap of site_name_txt
 
