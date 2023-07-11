@@ -45,6 +45,7 @@ https://betterprogramming.pub/the-only-step-by-step-guide-youll-need-to-build-a-
 - Do - Group related links perhaps order by id?
 - Do - Histogram of Link Duration
 - Do - Each table (Current, Departed, UnChanging) should have a rowcount
+- Do - Show version # to indicate previous versions for that URL
 - Done - The time off by 5 hours, use local time
 - Done - Remove links and instead have clickable links
 - Done - More human-readable dates
