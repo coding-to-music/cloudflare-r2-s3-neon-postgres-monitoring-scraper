@@ -63,6 +63,7 @@ https://betterprogramming.pub/the-only-step-by-step-guide-youll-need-to-build-a-
 - Do - Most revised links
 - Do - Time of day links added & departed
 - Do - Histogram of SiteNames - but show it changing over time
+- Do - Word Cloud of SiteNames
 - Do - Table of booleans and counts
 - Done - Last Scrape Time
 - Done - Word Cloud of line_content
