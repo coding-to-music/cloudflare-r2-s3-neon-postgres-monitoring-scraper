@@ -268,10 +268,10 @@ END $$;
 
 CREATE TABLE scraper_history (
   id            SERIAL PRIMARY KEY,
-  line_content  VARCHAR(255),
+  line_content  VARCHAR(1024),
   line_type     VARCHAR(10),
   line_num      NUMERIC,
-  line_url      VARCHAR(255),
+  line_url      VARCHAR(1024),
   first_dt      TIMESTAMP,
   latest_dt     TIMESTAMP,
   duration_secs NUMERIC,
@@ -297,10 +297,10 @@ Migration script
 -- Create a new temporary table with the additional columns
 CREATE TABLE temp_scraper_history (
   id            SERIAL PRIMARY KEY,
-  line_content  VARCHAR(255),
+  line_content  VARCHAR(1024),
   line_type     VARCHAR(10),
   line_num      NUMERIC,
-  line_url      VARCHAR(255),
+  line_url      VARCHAR(1024),
   first_dt      TIMESTAMP,
   latest_dt     TIMESTAMP,
   duration_secs NUMERIC,
