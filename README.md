@@ -246,6 +246,7 @@ Open the markdown output file `scrapers/connect.md` and preview the markdown
 ```
 Connection to PostgreSQL DB successful
 Query result: (datetime.date(2023, 6, 14),)
+
 ```
 
 ## scraper_history table
