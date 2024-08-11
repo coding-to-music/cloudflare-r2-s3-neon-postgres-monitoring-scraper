@@ -26,8 +26,7 @@ cursor = conn.cursor()
 
 query = """
 update scraper_history
-set departed = true,
-    perm_link = false
+set departed = true
 where id in (
 select id
 from  scraper_history
