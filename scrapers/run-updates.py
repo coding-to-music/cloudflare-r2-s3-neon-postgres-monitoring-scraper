@@ -64,18 +64,12 @@ query = """
 update  scraper_history
 set     perm_link = TRUE
 where id in (
-select id
-from  scraper_history
-where departed = FALSE
-and   perm_link = FALSE
-and   latest_dt = (
- select max(latest_dt) 
- from scraper_history
- )
-and   first_dt = (
- select min(first_dt) 
- from scraper_history
- ))
+  select id
+  from  scraper_history
+  where departed = FALSE
+  and   perm_link = FALSE
+  and DATE_PART('day', latest_dt - first_dt) > 10
+  )
 """
 cursor.execute(query)
 
@@ -103,6 +97,7 @@ query = """
 UPDATE scraper_history
 SET duration_secs = EXTRACT(EPOCH FROM (latest_dt - first_dt)),
     duration_txt = TO_CHAR(latest_dt - first_dt, 'DD "day(s), " HH24:MI')
+where departed = FALSE
 """
 
 # UPDATE scraper_history
