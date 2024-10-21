@@ -9,6 +9,7 @@ psycopg2-binary
 python-dotenv
 boto3
 pytz
+
 # dotenv
 
 # os
